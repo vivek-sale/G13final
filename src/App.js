@@ -14,7 +14,7 @@ function App() {
   // Main function
   const runCoco = async () => {
     // 3. TODO - Load network 
-    const net = await tf.loadGraphModel('https://projectshowise.s3.jp-tok.cloud-object-storage.appdomain.cloud/model.json')
+    const net = await tf.loadGraphModel('https://g13tensormodel.s3.ap.cloud-object-storage.appdomain.cloud/model.json')
     
     // Loop and detect hands
     setInterval(() => {
@@ -49,7 +49,7 @@ function App() {
       const expanded = casted.expandDims(0)
       const obj = await net.executeAsync(expanded)
 
-      //console.log(await obj[2].array())
+      console.log(await obj[0].array())
       
       const boxes = await obj[0].array()
       const classes = await obj[1].array()
